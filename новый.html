@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Экологические тропы Перми</title>
+        <link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/css/main.css">
+        <script src="https://js.arcgis.com/4.14/"></script>
+        <script>
+            let map1;
+            let map2;
+            let mapview;
+            require ([
+                "esri/Map",
+                "esri/views/MapView",],
+                function(Map,MapView)
+                {
+                    map1= new Map ({basemap: "topo"});
+                    map2= new Map ({basemap: "hybrid"})
+                    mapview = new MapView({container:"mapview", map: map1, zoom: 10,
+                center: [56,58]});
+                }
+                );
+                document.getElementById("hybrid").addEventListener ("click",
+                function ()
+                {
+                    mapview.map = map2;
+                }
+                )
+
+        </script>
+    </head>
+    <body>
+        <button id= "hybrid"> Hybrid</button>
+        <div id='mapview' style=" height: 500px; width: 500px;" ></div>    
+    </body> 
